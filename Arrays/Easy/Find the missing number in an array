@@ -1,0 +1,18 @@
+//OPTIMAL APPROACH
+Time Complexity: O(N), where N = size of array+1.
+Reason: Here, we need only 1 loop to calculate the XOR. The loop runs for approx. N times. So, the time complexity is O(N).
+Space Complexity: O(1) as we are not using any extra space.
+
+class Solution {
+    int missingNumber(int array[], int n) {
+        // Your Code Here
+        int xor1 = 0;
+        int xor2 = 0;
+        for(int i = 0;i<n-1;i++ ){
+            xor2 = xor2^array[i];
+            xor1 = xor1^(i+1);
+        }
+        xor1 = xor1^n;
+        return xor1^xor2;
+    }
+}
