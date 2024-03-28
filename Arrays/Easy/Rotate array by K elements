@@ -1,0 +1,26 @@
+//OPTIMAL APPROACH
+Time Complexity – O(N) where N is the number of elements in an array
+Space Complexity – O(1) since no extra space is required
+
+class Solution
+{
+   
+    static void rvereseArray(int arr[], int start, int end) 
+    { 
+        int temp; 
+        while (start < end) { 
+           temp = arr[start]; 
+            arr[start] = arr[end]; 
+            arr[end] = temp;
+            start++; 
+            end--; 
+        } 
+    }   
+    static void rotateArr(int arr[], int d, int n)
+    {
+        d%=n;
+        rvereseArray(arr, 0, d-1);
+        rvereseArray(arr, d, n - 1); 
+        rvereseArray(arr, 0, n - 1); 
+    }
+}
