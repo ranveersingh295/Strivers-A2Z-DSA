@@ -1,0 +1,29 @@
+OPTIMAL APPROACH
+Time Complexity: O(N) or O(N*logN) depending on which map data structure we are using, where N = size of the array.
+Reason: For example, if we are using an unordered_map data structure in C++ the time complexity will be O(N)(though in the worst case, unordered_map takes O(N) to find an element and the time complexity becomes O(N2)) but if we are using a map data structure, the time complexity will be O(N*logN). The least complexity will be O(N) as we are using a loop to traverse the array.
+Space Complexity: O(N) as we are using a map data structure.
+
+class Solution{
+    public static int lenOfLongSubarr (int a[], int n, int k) {
+        //Complete the function
+        Map<Long, Integer> preSumMap = new HashMap<>();
+        long sum = 0;
+        int maxLen = 0;
+        for (int i = 0; i < n; i++) {
+            sum += a[i];
+            if (sum == k) {
+                maxLen = Math.max(maxLen, i + 1);
+            }
+            long rem = sum - k;
+            if (preSumMap.containsKey(rem)) {
+                int len = i - preSumMap.get(rem);
+                maxLen = Math.max(maxLen, len);
+            }
+            if (!preSumMap.containsKey(sum)) {
+                preSumMap.put(sum, i);
+            }
+        }
+
+        return maxLen;
+}
+}
