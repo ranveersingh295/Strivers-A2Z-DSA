@@ -1,0 +1,25 @@
+//OPTIMAL APPROACH
+Time Complexity: O(m+n), Because at max i runs for n times and j runs for m times. When there are no common elements in arr1 and arr2 and all elements in arr1, arr2 are distinct. 
+Space Complexity : O(m+n) {If Space of Union ArrayList is considered} 
+O(1) {If Space of union ArrayList is not considered}
+
+class Solution{
+    public static int doUnion(int a[], int n, int b[], int m) 
+    {
+        //Your code 
+        HashSet<Integer> unionSet = new HashSet<>();
+        
+       
+        for (int i = 0; i < n; i++) {
+            unionSet.add(a[i]);
+        }
+        
+       
+        for (int i = 0; i < m; i++) {
+            unionSet.add(b[i]);
+        }
+        
+        
+        return unionSet.size();
+}
+}
