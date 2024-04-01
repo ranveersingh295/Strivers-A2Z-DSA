@@ -1,0 +1,44 @@
+OPTIMAL SOLUTION
+Time Complexity: O(3N), where N = size of the given array
+Finding the break-point, finding the next greater element, and reversal at the end takes O(N) for each, where N is the number of elements in the input array. This sums up to 3*O(N) which is approximately O(3N).
+Space Complexity: Since no extra storage is required. Thus, its space complexity is O(1).
+
+class Solution{
+    static List<Integer> nextPermutation(int N, int arr[]){
+        // code here
+        int index = -1;
+        for (int i = N - 2; i >= 0; i--) {
+            if (arr[i] < arr[i + 1]) { 
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1) {
+            reverse(arr, 0, N - 1);
+            return arr;
+        }
+
+        for (int i = N - 1; i > index; i--) {
+            if (arr[i] > arr[index]) {
+                int temp = arr[i];
+                arr[i] = arr[index];
+                arr[index] = temp;
+                break;
+            }
+        }
+
+        reverse(arr, index + 1, N - 1);
+        return arr;
+    }
+
+    static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+}
