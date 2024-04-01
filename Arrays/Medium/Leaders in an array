@@ -1,0 +1,22 @@
+OPTIMAL APPROACH
+Time Complexity: O(N) { Since the array is traversed single time back to front, it will consume O(N) of time where N = size of the array}.
+Space Complexity: O(N) { There is no extra space being used in this approach. But, a O(N) of space for ans array will be used in the worst case }.
+
+class Solution{
+    //Function to find the leaders in the array.
+    static ArrayList<Integer> leaders(int arr[], int n){
+        // Your code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        int maxFromRight = arr[n - 1]; 
+        ans.add(maxFromRight);
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] >= maxFromRight) {
+                ans.add(arr[i]);
+                maxFromRight = arr[i]; 
+            }
+        }
+        Collections.reverse(ans);
+        
+        return ans;
+    }
+}
