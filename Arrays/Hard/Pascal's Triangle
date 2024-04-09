@@ -1,0 +1,28 @@
+OPTIMAL SOLUTION
+Time Complexity: O(n2), where n = number of rows(given).
+Reason: We are generating a row for each single row. The number of rows is n. And generating an entire row takes O(n) time complexity.
+Space Complexity: In this case, we are only using space to store the answer. That is why space complexity can still be considered as O(1).
+
+CODE:
+class Solution {
+    //keeps giving rowno for generateRow() func
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int row = 1; row <=numRows; row++) {
+            ans.add(generateRow(row));
+        }
+        return ans;
+    }
+    //generates complete row for given rowno
+    public static List<Integer> generateRow(int row) {
+        List<Integer> ansRow = new ArrayList<>();
+        long ans = 1;
+        ansRow.add(1);
+        for (int col = 1; col < row; col++) {
+            ans = ans * (row - col);
+            ans = ans / col;
+            ansRow.add((int)ans);
+        }
+        return ansRow;
+    }
+}
