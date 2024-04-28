@@ -1,0 +1,19 @@
+public class Solution {
+    public static int countDigits(int n){
+        // Write your code here.
+        int count=0;
+        int c;
+        int x=n;
+        
+        while(x>0){
+            int l = x%10;
+            c = n % l ;
+            if(c == 0){
+                count ++
+            }
+            x=x/10;
+            }
+        
+        return count;
+    }
+}
