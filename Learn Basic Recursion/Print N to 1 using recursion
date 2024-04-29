@@ -1,0 +1,17 @@
+public class Solution
+{
+    public static int[] printNos(int x) {
+        // Write Your Code Here
+        int[] ans = new int[x];
+        int n = x;
+        printn(x,n,ans);
+        return ans;
+    }
+    public static void printn(int x,int n,int[ ] ans){
+        if(x == 0){
+            return;
+        }
+        ans[n-x] = x;
+        printn(x-1,n,ans);
+    }
+}
