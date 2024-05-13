@@ -1,0 +1,35 @@
+OPTIMAL SOLUTION
+class Solution
+{
+    //Function to reverse a linked list.
+    Node reverseList(Node head)
+    {
+        // code here
+        Node temp = head;
+        Node prev = null;
+        while(temp != null){
+            Node front = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = front;
+        }
+        return prev;
+    }
+}
+RECURSIVE SOLUTION
+class Solution
+{
+    //Function to reverse a linked list.
+    Node reverseList(Node head)
+    {
+        // code here
+            if(head == null || head.next == null){
+                return head;
+            }
+            Node newhead = reverseList(head.next);
+            Node front = head.next;
+            head.next = null;
+            front.next = head;
+        return newhead;
+    }
+}
